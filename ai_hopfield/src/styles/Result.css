@@ -1,0 +1,13 @@
+.result {
+  margin-top: 20px;
+}
+
+.result h2 {
+  margin: 0;
+  color: #333;
+}
+
+.result p {
+  font-size: 18px;
+  color: #666;
+}

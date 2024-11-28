@@ -1,23 +1,26 @@
 import React from "react";
-import "./styles/LetterGrid.css";
+import "../styles/Grid.css";
 
-const LetterGrid = ({ grid, setGrid }) => {
+const Grid = ({ grid, setGrid }) => {
   const toggleCell = (row, col) => {
-    const newGrid = [...grid];
-    newGrid[row][col] = newGrid[row][col] === 1 ? -1 : 1;
+    const newGrid = grid.map((r, i) =>
+      r.map((cell, j) =>
+        i === row && j === col ? (cell === 1 ? -1 : 1) : cell
+      )
+    );
     setGrid(newGrid);
   };
 
   return (
     <div className="grid">
       {grid.map((row, rowIndex) => (
-        <div className="row" key={rowIndex}>
+        <div className="grid-row" key={rowIndex}>
           {row.map((cell, colIndex) => (
             <div
               key={colIndex}
-              className={`cell ${cell === 1 ? "active" : ""}`}
+              className={`grid-cell ${cell === 1 ? "active" : ""}`}
               onClick={() => toggleCell(rowIndex, colIndex)}
-            />
+            ></div>
           ))}
         </div>
       ))}
@@ -25,4 +28,4 @@ const LetterGrid = ({ grid, setGrid }) => {
   );
 };
 
-export default LetterGrid;
+export default Grid;
